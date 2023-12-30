@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <main className="">
+    <main>
       <NavigationMenuDemo />
       <div className=" h-screen flex justify-center items-center">
         <Hero />

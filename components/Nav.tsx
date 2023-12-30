@@ -16,6 +16,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import ModeToggle from "./ui/mode-toggle";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -129,7 +130,10 @@ export function NavigationMenuDemo() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <Button>Log In</Button>
+      <div className="flex gap-5 items-center">
+        <ModeToggle />
+        <Button>Log In</Button>
+      </div>
     </motion.div>
   );
 }
