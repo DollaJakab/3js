@@ -2,6 +2,9 @@
 
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
+import { EffectComposer, Bloom, DepthOfField, Noise } from "@react-three/postprocessing";
+import { BlendFunction, BlurPass } from "postprocessing";
+import { useControls } from "leva";
 import {
   LinearEncoding,
   Mesh,
@@ -41,7 +44,7 @@ function Cube({ ready, setReady }: any) {
 
   return (
     <mesh ref={meshRef} rotation={[-Math.PI / 2, 0, 0]}>
-      <planeGeometry args={[60, 60, 128, 128]} />
+      <planeGeometry args={[90, 90, 128, 128]} />
       <meshStandardMaterial
         aoMap={ao}
         map={diff}
@@ -59,24 +62,37 @@ function Cube({ ready, setReady }: any) {
 function Lights() {
   const lightRef = useRef<PointLight>(null!);
   const lightRef2 = useRef<PointLight>(null!);
-  // useHelper(lightRef, PointLightHelper, 1, 'red');
-  // useHelper(lightRef2, PointLightHelper, 1, 'red');
+  // useHelper(lightRef, PointLightHelper, 1);
+  // useHelper(lightRef2, PointLightHelper, 1);
   return (
     <>
       {/* <ambientLight intensity={1}/> */}
       <pointLight
         ref={lightRef}
-        position={[8, 7, 2]}
-        intensity={40}
+        position={[5, 10, 2]}
+        intensity={150}
         color={[1, 0.25, 0.7]}
+        distance={50}
         castShadow
       />
       <pointLight
         ref={lightRef2}
-        position={[-5, 7, -3]}
-        intensity={40}
+        position={[-5, 10, -3]}
+        intensity={120}
         color={[0.14, 0.5, 1]}
         castShadow
+        distance={50}
+
+      />
+      <rectAreaLight
+        position={[0, 20, 0]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        width={10}
+        height={10}
+        intensity={5}
+        color={[0.14, 0.5, 1]}
+
+     
       />
     </>
   );
@@ -92,7 +108,43 @@ function Controls() {
   //   }
 
   // })
-  return <OrbitControls ref={orbitsControlsRef} autoRotate autoRotateSpeed={1} enablePan={false} enableZoom={false} enableRotate={false} />;;
+  return <OrbitControls ref={orbitsControlsRef} autoRotateSpeed={1} enablePan={false} enableZoom={false} enableRotate={false} />;
+}
+
+function Effects() {
+  const { focusDistance, focalLength, bokehScale, blur } = useControls({
+    focusDistance: {
+      min: 0,
+      max: 4,
+      value: 2
+    },
+    focalLength: {
+      min: 0,
+      max: 1,
+      value: 0.1
+    },
+    bokehScale: {
+      min: 0,
+      max: 10,
+      value: 2
+    },
+    blur: {
+      min: 0,
+      max: 200,
+      value: 10
+    }
+  });
+  return (
+    <EffectComposer >
+             <DepthOfField
+          focusDistance={focusDistance}
+          focalLength={focalLength}
+          bokehScale={bokehScale}
+          blendFunction={BlendFunction.SCREEN}
+          blur={blur}
+        />
+      </EffectComposer>
+  )
 }
 
 export default function Home() {
@@ -100,6 +152,9 @@ export default function Home() {
   useEffect(() => {
     console.log(ready);
   }, [ready]);
+
+
+  
   return (
     <main
       style={{
@@ -128,11 +183,12 @@ export default function Home() {
       >
         <Suspense fallback={null}>
           <Canvas>
-            <PerspectiveCamera makeDefault position={[0, 20, 20]} />
+            <PerspectiveCamera makeDefault position={[0, 10, 20]} />
             <Lights />
 
             <Cube ready={ready} setReady={setReady} />
             <Controls />
+            <Effects />
           </Canvas>
         </Suspense>
       </motion.div>
