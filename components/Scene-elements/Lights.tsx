@@ -11,7 +11,7 @@ const Lights = () => {
       {/* <ambientLight intensity={1}/> */}
       <pointLight
         ref={lightRef}
-        position={[5, 10, 2]}
+        position={[5, 10, 4]}
         intensity={120}
         color={[1, 0.25, 0.7]}
         distance={50}

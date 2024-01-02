@@ -6,7 +6,9 @@ import Mesh from "./Scene-elements/Mesh";
 import Effects from "./Scene-elements/Effects";
 import Lights from "./Scene-elements/Lights";
 import Controls from "./Scene-elements/Controls";
-import Model from '@/public/Boot'
+import Model from "@/public/Boot";
+import Boot from "@/public/gltf/Scene";
+import Bearpaw from "@/public/bearpaw/Bearpaw";
 
 const Scene = () => {
   const [ready, setReady] = useState(false);
@@ -15,18 +17,17 @@ const Scene = () => {
   }, [ready]);
   return (
     <motion.div
-      className=" w-screen  h-screen bg-black"
+      className=" w-screen absolute top-0  h-screen bg-transparent"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay: 2 }}
+      transition={{ duration: 0.5, delay: 3 }}
       color="#000"
     >
       <Suspense fallback={null}>
-        <Canvas>
-          <ambientLight />
+        <Canvas shadows>
           <Lights />
           <PerspectiveCamera makeDefault position={[0, 10, 20]} far={100} />
-          <Model />
+          <Bearpaw />
           <Controls />
           {/* <Effects /> */}
         </Canvas>

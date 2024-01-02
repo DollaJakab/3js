@@ -22,7 +22,7 @@ const Mesh = ({ ready, setReady }: any) => {
     setReady(true);
   }, [normal, rougness, diff, disp, ao]);
   return (
-    <mesh ref={meshRef} rotation={[-Math.PI / 2, 0, 0]}>
+    <mesh ref={meshRef} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
       <planeGeometry args={[90, 90, 50, 50]} />
       <meshStandardMaterial
         aoMap={ao}
