@@ -15,7 +15,7 @@ const Scene = () => {
   }, [ready]);
   return (
     <motion.div
-      className="absolute top-0 w-screen  h-screen bg-black"
+      className=" w-screen  h-screen bg-black"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 2 }}
@@ -23,9 +23,10 @@ const Scene = () => {
     >
       <Suspense fallback={null}>
         <Canvas>
-          <PerspectiveCamera makeDefault position={[0, 10, 20]} far={100} />
+          <ambientLight />
           <Lights />
-          <Mesh ready={ready} setReady={setReady} />
+          <PerspectiveCamera makeDefault position={[0, 10, 20]} far={100} />
+          <Model />
           <Controls />
           {/* <Effects /> */}
         </Canvas>

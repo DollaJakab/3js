@@ -15,7 +15,7 @@ const Controls = () => {
     <OrbitControls
       ref={orbitsControlsRef}
       autoRotate
-      autoRotateSpeed={0.5}
+      autoRotateSpeed={0.3}
       enablePan={false}
       enableZoom={false}
       enableRotate={false}

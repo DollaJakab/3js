@@ -23,16 +23,16 @@ const Mesh = ({ ready, setReady }: any) => {
   }, [normal, rougness, diff, disp, ao]);
   return (
     <mesh ref={meshRef} rotation={[-Math.PI / 2, 0, 0]}>
-      <planeGeometry args={[90, 90, 128, 128]} />
+      <planeGeometry args={[90, 90, 50, 50]} />
       <meshStandardMaterial
         aoMap={ao}
         map={diff}
         displacementMap={disp}
         normalMap={normal}
         roughnessMap={rougness}
-        displacementScale={0.5}
+        displacementScale={0.9}
         aoMapIntensity={0.5}
-        roughness={10}
+        roughness={1}
       />
     </mesh>
   );
