@@ -1,21 +1,15 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
-const Hero = () => {
+const Hero = ({ ready }: any) => {
   const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3500);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <>
       <AnimatePresence>
-        {isLoading && (
+        {!ready && (
           <motion.div
-            className="z-10  flex justify-center absolute top-[50%] items-center text-center flex-col  w-screen m-auto"
+            className="z-10 bg-transparent  flex justify-center absolute top-[50%] items-center text-center flex-col  w-screen m-auto"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
@@ -31,14 +25,14 @@ const Hero = () => {
         )}
       </AnimatePresence>
       <AnimatePresence>
-        {!isLoading && (
+        {ready && (
           <motion.div
             className="z-10  flex justify-center absolute top-[70%] items-center text-center flex-col  w-screen m-auto"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <h1 className="text-7xl text-white font-bold ">
+            <h1 className="text-4xl  md:text-7xl text-white font-bold ">
               Explore Our Collection
             </h1>
           </motion.div>

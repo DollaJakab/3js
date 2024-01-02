@@ -6,15 +6,17 @@ import Scene from "@/components/Scene";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import SceneBoot from "@/components/SceneBoot";
+import { useState } from "react";
 
 export default function Home() {
+  const [ready, setReady] = useState(false);
   return (
     <main>
       <NavigationMenuDemo />
       <div className=" h-screen w-screen flex justify-center items-center">
-        <Hero />
+        <Hero ready={ready} />
       </div>
-      <Scene />
+      <Scene ready={ready} setReady={setReady} />
       {/* <SceneBoot /> */}
       <div className="h-screen  flex justify-center relative">
         <Button>HEHEHEHE</Button>
