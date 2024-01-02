@@ -6,8 +6,7 @@ import Mesh from "./Scene-elements/Mesh";
 import Effects from "./Scene-elements/Effects";
 import Lights from "./Scene-elements/Lights";
 import Controls from "./Scene-elements/Controls";
-import Model from "@/public/Boot";
-import Boot from "@/public/gltf/Scene";
+
 import Bearpaw from "@/public/bearpaw/Bearpaw";
 
 const Scene = () => {

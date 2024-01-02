@@ -14,11 +14,11 @@ const Controls = () => {
   return (
     <OrbitControls
       ref={orbitsControlsRef}
-      autoRotate
       autoRotateSpeed={0.3}
       enablePan={false}
       enableZoom={false}
       enableRotate={false}
+      target={[0, 3, 0]}
     />
   );
 };

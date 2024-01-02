@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { PointLight } from "three";
+import { PointLight, Vector3 } from "three";
 
 const Lights = () => {
   const lightRef = useRef<PointLight>(null!);
@@ -11,7 +11,7 @@ const Lights = () => {
       {/* <ambientLight intensity={1}/> */}
       <pointLight
         ref={lightRef}
-        position={[5, 10, 4]}
+        position={[5, 12, 4]}
         intensity={120}
         color={[1, 0.25, 0.7]}
         distance={50}
@@ -30,7 +30,7 @@ const Lights = () => {
         rotation={[-Math.PI / 2, 0, 0]}
         width={10}
         height={10}
-        intensity={2}
+        intensity={10}
         color={[0.14, 0.5, 1]}
       />
     </>

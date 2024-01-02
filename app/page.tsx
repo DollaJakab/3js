@@ -12,7 +12,7 @@ export default function Home() {
   const [ready, setReady] = useState(false);
   return (
     <main>
-      <NavigationMenuDemo />
+      <NavigationMenuDemo ready={ready} />
       <div className=" h-screen w-screen flex justify-center items-center">
         <Hero ready={ready} />
       </div>
