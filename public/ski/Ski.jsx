@@ -26,13 +26,13 @@ export default function Model(props) {
       {...props}
       dispose={null}
       scale={5}
-      position={[0, 2.55, -10]}
+      position={[0, 6.3, -10]}
     >
       <group name="Sketchfab_Scene">
         <group
           name="Sketchfab_model"
           position={[0, -0.196, -0.19]}
-          rotation={[-Math.PI / 2.2, 0, 0]}
+          rotation={[-Math.PI / 2.8, 0, 0]}
         >
           <group
             name="f515ae1230584372a95a4afb619b3fe0fbx"

@@ -18,7 +18,7 @@ const Controls = () => {
       enablePan={false}
       enableZoom={false}
       enableRotate={false}
-      target={[0, 3, 0]}
+      target={[0, 1, 0]}
     />
   );
 };

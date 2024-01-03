@@ -58,7 +58,7 @@ const Scene = ({ ready, setReady }: any) => {
         <Suspense fallback={null}>
           <PerspectiveCamera
             makeDefault
-            position={!isMobile ? [0, 3, 15] : [0, 0, 35]}
+            position={!isMobile ? [0, -5, 15] : [0, 0, 35]}
             far={100}
           />
           <Lights />

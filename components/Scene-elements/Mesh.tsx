@@ -17,7 +17,7 @@ const Mesh = ({ ready, setReady }: any) => {
     [normal, rougness, diff, disp, ao].forEach((texture) => {
       texture.wrapS = RepeatWrapping;
       texture.wrapT = RepeatWrapping;
-      texture.repeat.set(2, 2);
+      texture.repeat.set(4, 4);
     });
     setReady(true);
   }, [normal, rougness, diff, disp, ao]);
@@ -26,7 +26,7 @@ const Mesh = ({ ready, setReady }: any) => {
     console.log("Loading");
   }, []);
   useFrame((state, delta) => {
-    let t = -state.clock.getElapsedTime() * 0.228;
+    let t = -state.clock.getElapsedTime() * 0.398;
     const vect = new Vector2(0, t);
     rougness.offset = vect;
     normal.offset = vect;
@@ -34,7 +34,7 @@ const Mesh = ({ ready, setReady }: any) => {
     ao.offset = vect;
   });
   return (
-    <mesh ref={meshRef} rotation={[-Math.PI / 2.2, 0, 0]} receiveShadow>
+    <mesh ref={meshRef} rotation={[-Math.PI / 2.8, 0, 0]} receiveShadow>
       <planeGeometry args={[90, 90, 50, 50]} />
       <meshStandardMaterial
         aoMap={ao}
@@ -42,7 +42,7 @@ const Mesh = ({ ready, setReady }: any) => {
         displacementMap={disp}
         normalMap={normal}
         roughnessMap={rougness}
-        displacementScale={0.3}
+        displacementScale={0.1}
         aoMapIntensity={0.5}
         roughness={0.7}
       />
